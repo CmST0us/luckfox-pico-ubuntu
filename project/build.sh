@@ -546,6 +546,14 @@ function build_rootfs(){
 	finish_build
 }
 
+function busybox_menuconfig() {
+	check_config RK_BOOT_MEDIUM || return 0
+
+	make busybox_menuconfig -C ${SDK_SYSDRV_DIR}
+
+	finish_build
+}
+
 function build_recovery(){
 	check_config RK_ENABLE_RECOVERY || return 0
 
@@ -2023,6 +2031,7 @@ do
 		app) option=build_app ;;
 		info) option=build_info ;;
 		tool) option=build_tool ;;
+		busybox_menuconfig) option=busybox_menuconfig ;;
 		*) option=usage ;;
 	esac
 	if [ $((num)) -gt 0 ]; then

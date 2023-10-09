@@ -64,7 +64,7 @@ ARCH := arm
 SYSDRV_CROSS_CFLAGS += -march=armv7-a -mfpu=neon -mfloat-abi=hard
 endif
 
-ifeq ($(SYSDRV_CROSS),arm-rockchip830-linux-gnueabihf)
+ifeq ($(SYSDRV_CROSS),arm-none-linux-gnueabihf)
 SYSDRV_LIB_TYPE := glibc
 ARCH := arm
 SYSDRV_CROSS_CFLAGS += -march=armv7-a -mfpu=neon -mfloat-abi=hard

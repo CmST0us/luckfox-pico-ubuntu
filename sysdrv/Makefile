@@ -17,6 +17,7 @@ endif
 ifneq ($(RK_JOBS),)
 SYSDRV_JOBS := $(RK_JOBS)
 endif
+SYSDRV_JOBS := 6
 
 ifneq ($(RK_TOOLCHAIN_CROSS),)
 SYSDRV_CROSS:= $(RK_TOOLCHAIN_CROSS)
@@ -408,21 +409,7 @@ kernel_clean:
 ##########################################################################################
 rootfs_prepare: prepare
 	@echo -e "$(C_GREEN) ==sysdrv== prepare rootfs   $(C_NORMAL)"
-	tar xf $(SYSDRV_DIR)/tools/board/rootfs_script.tar -C $(SYSDRV_DIR_OUT_ROOTFS)
-	tar xjf $(TOOLCHAIN_DIR)/$(TOOLCHAIN_RUNTIME_LIB)/$(TOOLCHAIN_RUNTIME_LIB_C) -C $(SYSDRV_DIR_OUT_ROOTFS)
-	pushd $(SYSDRV_DIR_OUT_ROOTFS)/lib/ ; mv -fv \
-		libasan_preinit.o \
-		libasan.so* \
-		libtsan.so* \
-		libubsan.so* \
-		libSegFault.so \
-		libmemusage.so* \
-		libpcprofile.so* \
-		libthread_db*.so* \
-		libBrokenLocale* \
-		libinproctrace.so \
-		$(SYSDRV_DIR_OUT_BOARD); \
-	popd
+	tar -x -z -h -f $(SYSDRV_DIR)/tools/board/ubuntu-base-rootfs.tar.gz -C $(SYSDRV_DIR_OUT_ROOTFS)
 
 ##########################################################################################
 #	build busybox
@@ -511,7 +498,7 @@ drv_clean:
 ##########################################################################################
 #	build rootfs
 ##########################################################################################
-rootfs: rootfs_prepare pctools busybox boardtools drv
+rootfs: rootfs_prepare pctools boardtools drv
 	@echo -e "$(C_GREEN) ==sysdrv== build rootfs  $(C_NORMAL)"
 	make -C $(SYSDRV_DIR) strip
 	pushd $(SYSDRV_DIR)/out;tar cf $(OUT_ROOTFS).tar $(OUT_ROOTFS);popd

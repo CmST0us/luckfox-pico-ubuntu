@@ -1,28 +1,15 @@
 
 tools_board-builds: \
-		board-build-toolkits \
-		board-build-gdb \
-		board-build-eudev \
 		board-build-rndis \
 		board-build-adbd \
 		board-build-rk_ota \
-		board-build-rockchip_test \
-		board-build-e2fsprogs \
-		board-build-sysstat \
 		board-build-mtd_utils
 	@echo "build tools board done"
 
 tools_board-clean:
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/e2fsprogs distclean
 	$(MAKE) -C $(SYSDRV_DIR)/tools/board/mtd-utils distclean
 	$(MAKE) -C $(SYSDRV_DIR)/tools/board/android-tools distclean
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/eudev distclean
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/toolkits distclean
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/gdb distclean
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/memtester distclean
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/stressapptest distclean
 	$(MAKE) -C $(SYSDRV_DIR)/tools/board/rk_ota distclean
-	$(MAKE) -C $(SYSDRV_DIR)/tools/board/sysstat distclean
 
 board-build-toolkits:
 	$(MAKE) -C $(SYSDRV_DIR)/tools/board/toolkits
