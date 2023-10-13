@@ -24,8 +24,8 @@ media_src := $(dir $(media_src))
 ################################################################################
 all:
 	@rm -rf $(RK_MEDIA_OUTPUT)
-	$(foreach target,$(media_src),make -C $(target)||exit -1;)
-	$(call MAROC_COPY_PKG_TO_MEDIA_OUTPUT, $(RK_PROJECT_PATH_MEDIA), $(RK_MEDIA_OUTPUT))
+#	$(foreach target,$(media_src),make -C $(target)||exit -1;)
+#	$(call MAROC_COPY_PKG_TO_MEDIA_OUTPUT, $(RK_PROJECT_PATH_MEDIA), $(RK_MEDIA_OUTPUT))
 
 distclean: clean
 

@@ -23,8 +23,8 @@ pkg-build := fastboot-build
 endif
 
 all: $(pkg-build)
-	$(foreach target,$(app_src),make -C $(target)||exit -1;)
-	$(call MAROC_COPY_PKG_TO_APP_OUTPUT, $(RK_PROJECT_PATH_APP), $(RK_APP_OUTPUT))
+#	$(foreach target,$(app_src),make -C $(target)||exit -1;)
+#	$(call MAROC_COPY_PKG_TO_APP_OUTPUT, $(RK_PROJECT_PATH_APP), $(RK_APP_OUTPUT))
 
 fastboot-build:
 	@test ! -d $(RK_APP_COMPONENT)/fastboot_server || make -C $(RK_APP_COMPONENT)/fastboot_server
