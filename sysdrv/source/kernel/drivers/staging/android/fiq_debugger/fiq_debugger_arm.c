@@ -146,8 +146,8 @@ static void __naked get_mode_regs(struct mode_regs *regs)
 void fiq_debugger_dump_allregs(struct fiq_debugger_output *output,
 		const struct pt_regs *regs)
 {
-	struct mode_regs mode_regs;
-	unsigned long mode = regs->ARM_cpsr & MODE_MASK;
+	struct mode_regs mode_regs = {0};
+	long mode = regs->ARM_cpsr & MODE_MASK;
 
 	fiq_debugger_dump_regs(output, regs);
 	get_mode_regs(&mode_regs);
@@ -176,6 +176,7 @@ void fiq_debugger_dump_allregs(struct fiq_debugger_output *output,
 	output->printf(output,
 			" fiq: sp %08x  lr %08x  spsr %08x\n",
 			mode_regs.sp_fiq, mode_regs.lr_fiq, mode_regs.spsr_fiq);
+		
 }
 
 struct stacktrace_state {
