@@ -1,1 +1,1 @@
-**/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+sysdrv/tools/board/ubuntu-base-rootfs.tar.gz filter=lfs diff=lfs merge=lfs -text
