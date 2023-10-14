@@ -561,7 +561,7 @@ env: prepare
 ifeq ($(BOOT_MEDIUM),emmc)
 	@echo "blkdevparts=mmcblk0:$(CONFIG_SYSDRV_PARTITION)" > $(SYSDRV_UBOOT_ENV_CFG_FILE)
 	@test "$(ROOTFS_PART_NUM)" = "FAIL" || \
-		echo "sys_bootargs=root=/dev/mmcblk0p$(ROOTFS_PART_NUM)" >> $(SYSDRV_UBOOT_ENV_CFG_FILE)
+		echo "sys_bootargs=root=/dev/mmcblk0p$(ROOTFS_PART_NUM) rw" >> $(SYSDRV_UBOOT_ENV_CFG_FILE)
 endif
 ifeq ($(BOOT_MEDIUM),spi_nor)
 	@echo "mtdparts=sfc_nor:$(CONFIG_SYSDRV_PARTITION)" > $(SYSDRV_UBOOT_ENV_CFG_FILE)
