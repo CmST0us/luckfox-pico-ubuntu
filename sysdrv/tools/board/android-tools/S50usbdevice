@@ -4,7 +4,6 @@
 # For kernel v4.4 usb configfs
 #
 # Load default env variables from profiles
-. /etc/profile
 
 UMS_EN=off
 ADB_EN=on
@@ -141,54 +140,45 @@ parse_parameter()
 
 parameter_init()
 {
-	while read line
-	do
-		case "$line" in
-			usb_mtp_en)
-				MTP_EN=on
-				make_config_string mtp
-				;;
-			usb_adb_en)
-				ADB_EN=on
-				make_config_string adb
-				;;
-			usb_ums_en)
-				UMS_EN=on
-				make_config_string ums
-				;;
-			usb_ntb_en)
-				NTB_EN=on
-				make_config_string ntb
-				;;
-			usb_acm_en)
-				ACM_EN=on
-				make_config_string acm
-				;;
-			usb_uac1_en)
-				UAC1_EN=on
-				make_config_string uac1
-				;;
-			usb_uac2_en)
-				UAC2_EN=on
-				make_config_string uac2
-				;;
-			usb_uvc_en)
-				UVC_EN=on
-				make_config_string uvc
-				;;
-			usb_rndis_en)
-				RNDIS_EN=on
-				make_config_string rndis
-				;;
-			usb_hid_en)
-				HID_EN=on
-				make_config_string hid
-				;;
-			*)
-				parse_parameter ${line}
-				;;
-		esac
-	done < $USB_CONFIG_FILE
+	if [ $MTP_EN = on ];then
+		make_config_string mtp
+	fi
+			
+	if [ $ADB_EN = on ];then
+		make_config_string adb
+	fi
+			
+	if [ $UMS_EN = on ];then
+		make_config_string ums
+	fi
+			
+	if [ $NTB_EN = on ];then
+		make_config_string ntb
+	fi
+			
+	if [ $ACM_EN = on ];then
+		make_config_string acm
+	fi
+			
+	if [ $UAC1_EN = on ];then
+		make_config_string uac1
+	fi
+			
+	if [ $UAC2_EN = on ];then
+		make_config_string uac2
+	fi
+			
+	if [ $UVC_EN = on ];then
+		make_config_string uvc
+	fi
+			
+	if [ $RNDIS_EN = on ];then
+		make_config_string rndis
+	fi
+			
+	if [ $HID_EN = on ];then
+		make_config_string hid
+	fi
 
 	case "$CONFIG_STRING" in
 		ums)
