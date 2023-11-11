@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # setup configfs for adbd, usb mass storage and MTP....
 # For kernel v4.4 usb configfs
