@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 cmd=`realpath $0`
 _DIR=`dirname $cmd`
 cd $_DIR
